@@ -124,14 +124,18 @@ class FTPUploader:
             with open(self.filename, 'rb') as file:
                 ftp.storbinary(f'STOR {self.filename}', file)
 
+            with open(self.filename, 'r') as uploaded_file:
+                file_contents = uploaded_file.read()
+                print(f"Contents of '{self.filename}':\n{file_contents}")
+
             ftp.quit()
             print(f"File '{self.filename}' uploaded successfully to FTP server.")
         except Exception as e:
             print(f"Error uploading file to FTP server: {str(e)}")
 
-student = Student("Doe", "John", "Smith", "CS101", "2000-01-01", "123 Main St")
-real_success = DesiredSuccess(["Math", "Physics", "Chemistry"], [90, 85, 92])
-desired_success = DesiredSuccess(["Math", "Physics", "Chemistry"], [95, 90, 95])
+student = Student("Potrap", "Maksym", "Vadymovich", "ISD42", "2003-01-31", "Reigan 123 St")
+real_success = DesiredSuccess(["Math", "Java", "SQL"], [70, 99, 91])
+desired_success = DesiredSuccess(["Math", "Java", "SQL"], [90, 100, 85])
 student_data = StudentData(student, real_success, desired_success)
 
 student_data_dict = {
