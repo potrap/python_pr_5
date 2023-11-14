@@ -116,7 +116,6 @@ class FTPUploader:
                 ftp.cwd(remote_directory)
             except error_perm as e:
                 if "550" in str(e):
-                    # Directory doesn't exist, create it
                     ftp.mkd(remote_directory)
                     ftp.cwd(remote_directory)
                 else:
